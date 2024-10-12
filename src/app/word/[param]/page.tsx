@@ -1,6 +1,23 @@
 import Search from "@/components/search";
+import { api } from "@/trpc/server";
+import { notFound } from "next/navigation";
+import Result from "./_components/result";
 
-export default async function HomePage() {
+interface Props {
+  params: {
+    param: string;
+  };
+}
+
+export default async function WordPage({ params }: Props) {
+  const word = decodeURIComponent(params.param);
+
+  const wordData = await api.word.get(word);
+
+  if (!wordData) {
+    return notFound();
+  }
+
   return (
     <main className="relative z-0 h-dvh w-full bg-muted">
       <div
@@ -19,6 +36,7 @@ export default async function HomePage() {
           </div>
         </div>
         <Search />
+        <Result data={wordData} />
       </div>
     </main>
   );

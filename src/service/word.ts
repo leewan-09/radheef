@@ -11,10 +11,6 @@ async function search(query: string) {
         { word: { contains: normalizedQuery } },
       ],
     },
-    include: {
-      letter: true,
-      meaning: true,
-    },
     take: 5,
     orderBy: {
       word: "asc",
@@ -22,8 +18,19 @@ async function search(query: string) {
   });
 }
 
+async function get(word: string) {
+  return await db.word.findUnique({
+    where: { word },
+    include: {
+      letter: true,
+      meaning: true,
+    },
+  });
+}
+
 const wordService = {
   search,
+  get,
 };
 
 export default wordService;
