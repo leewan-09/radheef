@@ -1,9 +1,25 @@
-import { HydrateClient } from "@/trpc/server";
+import Home from "./_components/home";
 
-export default async function Home() {
+export default async function HomePage() {
   return (
-    <HydrateClient>
-      <main className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-[#2e026d] to-[#15162c] text-white"></main>
-    </HydrateClient>
+    <main className="relative z-0 h-dvh w-full bg-muted">
+      <div
+        className="absolute top-0 -z-10 h-40 w-full sm:h-52"
+        style={{
+          background:
+            "radial-gradient(circle at 24.1% 68.8%, rgb(50, 50, 50) 0%, rgb(0, 0, 0) 99.4%)",
+        }}
+      />
+      <div className="mx-auto flex max-w-screen-lg flex-col px-5 lg:px-0">
+        <div className="mt-5">
+          <div className="mx-auto">
+            <h1 className="text-2xl font-bold text-white sm:text-3xl">
+              Radheef
+            </h1>
+          </div>
+        </div>
+        <Home />
+      </div>
+    </main>
   );
 }

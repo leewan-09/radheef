@@ -1,15 +1,14 @@
 import { db } from "@/server/db";
 
 async function search(query: string) {
+  const normalizedQuery = query.normalize("NFC");
   return await db.word.findMany({
     where: {
       OR: [
-        { letter: { letter: { contains: query, mode: "insensitive" } } },
-        { word: { contains: query, mode: "insensitive" } },
-        { en_word: { contains: query, mode: "insensitive" } },
-        { transliteration: { contains: query, mode: "insensitive" } },
-        { meaning: { meaning: { contains: query, mode: "insensitive" } } },
-        { meaning: { en_meaning: { contains: query, mode: "insensitive" } } },
+        { letter: { letter: { equals: normalizedQuery } } },
+        { word: { startsWith: normalizedQuery } },
+        { word: { endsWith: normalizedQuery } },
+        { word: { contains: normalizedQuery } },
       ],
     },
     include: {
@@ -17,6 +16,9 @@ async function search(query: string) {
       meaning: true,
     },
     take: 5,
+    orderBy: {
+      word: "asc",
+    },
   });
 }
 
