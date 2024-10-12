@@ -1,7 +1,7 @@
 import "@/styles/globals.css";
 
 import { GeistSans } from "geist/font/sans";
-import { type Metadata } from "next";
+import { type Metadata, type Viewport } from "next";
 import { TRPCReactProvider } from "@/trpc/react";
 
 export const metadata: Metadata = {
@@ -9,6 +9,11 @@ export const metadata: Metadata = {
   description:
     "Explore the Dhivehi language with our comprehensive online dictionary. Find definitions, translations, and usage examples for Dhivehi words and phrases.",
   icons: [{ rel: "icon", url: "/favicon.ico" }],
+};
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  userScalable: false,
 };
 
 export default function RootLayout({
