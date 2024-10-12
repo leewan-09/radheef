@@ -13,32 +13,38 @@ export default function Result({ data }: Props) {
   }
 
   return (
-    <div
+    <article
       dir="rtl"
       className="mt-14 flex flex-col rounded-lg border bg-white p-5 drop-shadow-sm sm:mt-28"
     >
-      <div className="flex flex-col gap-2">
-        <div className="dhivehi-font text-2xl font-bold sm:text-3xl">
-          {data.word}
-        </div>
-        <div className="text-sm text-muted-foreground">{data.en_word}</div>
-
-        <div className="mt-2 flex flex-col gap-1">
-          <div className="dhivehi-font font-bold text-muted-foreground">
-            މާނަ :
-          </div>
-          <div className="dhivehi-font leading-7 tracking-wider">
-            {data.meaning.meaning}
-          </div>
-          {data.meaning.en_meaning && (
-            <>
-              <div className="my-2 border-b border-gray-200"></div>
-              <div className="font-bold text-muted-foreground">Meaning</div>
-              <div>{data.meaning.en_meaning}</div>
-            </>
+      <header className="flex flex-col gap-2">
+        <h1 className="dhivehi-font text-2xl font-bold sm:text-3xl">
+          {data.word}{" "}
+          {data.transliteration && (
+            <span className="text-sm text-muted-foreground">
+              ({data.transliteration})
+            </span>
           )}
-        </div>
-      </div>
-    </div>
+        </h1>
+        <p className="text-sm text-muted-foreground">
+          <span className="sr-only">English translation: </span>
+          {data.en_word}
+        </p>
+      </header>
+
+      <section className="mt-2 flex flex-col gap-1">
+        <h2 className="dhivehi-font font-bold text-muted-foreground">މާނަ :</h2>
+        <p className="dhivehi-font leading-7 tracking-wider">
+          {data.meaning.meaning}
+        </p>
+        {data.meaning.en_meaning && (
+          <>
+            <hr className="my-2 border-b border-gray-200" />
+            <h2 className="font-bold text-muted-foreground">Meaning</h2>
+            <p>{data.meaning.en_meaning}</p>
+          </>
+        )}
+      </section>
+    </article>
   );
 }

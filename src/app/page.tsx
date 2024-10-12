@@ -12,11 +12,12 @@ export default async function HomePage() {
       />
       <div className="mx-auto flex max-w-screen-lg flex-col px-5 lg:px-0">
         <div className="mt-5">
-          <div className="mx-auto">
-            <h1 className="text-2xl font-bold text-white sm:text-3xl">
-              Radheef
-            </h1>
-          </div>
+          <h1
+            dir="rtl"
+            className="dhivehi-font text-2xl font-bold text-white sm:text-3xl"
+          >
+            ރަދީފް
+          </h1>
         </div>
         <Search />
       </div>

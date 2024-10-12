@@ -2,11 +2,53 @@ import Search from "@/components/search";
 import { api } from "@/trpc/server";
 import { notFound } from "next/navigation";
 import Result from "./_components/result";
+import { type Metadata } from "next";
 
 interface Props {
   params: {
     param: string;
   };
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const word = decodeURIComponent(params.param);
+
+  try {
+    const wordData = await api.word.get(word);
+
+    if (!wordData) {
+      return {
+        title: `${word} - ރަދީފް`,
+        description: `Definition for "${word}" not found in the Dhivehi dictionary.`,
+      };
+    }
+
+    const description = wordData.meaning.meaning
+      ? wordData.meaning.meaning.substring(0, 160) +
+        (wordData.meaning.meaning.length > 160 ? "..." : "")
+      : `Explore the definition and usage of "${word}" in the Dhivehi language.`;
+
+    return {
+      title: `${word} - ރަދީފް`,
+      description,
+      openGraph: {
+        title: `${word} - ރަދީފް (Dhivehi Dictionary)`,
+        description,
+      },
+      twitter: {
+        card: "summary",
+        title: `${word} - ރަދީފް (Dhivehi Dictionary)`,
+        description,
+      },
+    };
+  } catch (error) {
+    console.error("Error fetching word data:", error);
+    return {
+      title: "ރަދީފް - Dhivehi Dictionary",
+      description:
+        "Explore the Dhivehi language with our comprehensive online dictionary.",
+    };
+  }
 }
 
 export default async function WordPage({ params }: Props) {
@@ -29,11 +71,12 @@ export default async function WordPage({ params }: Props) {
       />
       <div className="mx-auto flex max-w-screen-lg flex-col px-5 lg:px-0">
         <div className="mt-5">
-          <div className="mx-auto">
-            <h1 className="text-2xl font-bold text-white sm:text-3xl">
-              Radheef
-            </h1>
-          </div>
+          <h1
+            dir="rtl"
+            className="dhivehi-font text-2xl font-bold text-white sm:text-3xl"
+          >
+            ރަދީފް
+          </h1>
         </div>
         <Search />
         <Result data={wordData} />

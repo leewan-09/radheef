@@ -5,8 +5,9 @@ import { type Metadata } from "next";
 import { TRPCReactProvider } from "@/trpc/react";
 
 export const metadata: Metadata = {
-  title: "Radheef",
-  description: "Dhivehi Dictionary",
+  title: "ރަދީފް - Dhivehi Dictionary",
+  description:
+    "Explore the Dhivehi language with our comprehensive online dictionary. Find definitions, translations, and usage examples for Dhivehi words and phrases.",
   icons: [{ rel: "icon", url: "/favicon.ico" }],
 };
 
