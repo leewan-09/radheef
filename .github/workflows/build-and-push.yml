@@ -31,7 +31,7 @@ jobs:
           username: ${{ secrets.RADHEEF_USER }}
           password: ${{ secrets.RADHEEF_PASSWORD }}
           script: |
-            cd www
+            cd ${{ secrets.RADHEEF_DIR }}
             docker compose pull radheef
             docker compose down radheef
             docker compose up -d radheef
