@@ -20,3 +20,19 @@ jobs:
           context: .
           push: true
           tags: leewan98/radheef:latest
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to DigitalOcean
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.RADHEEF_HOST }}
+          username: ${{ secrets.RADHEEF_USER }}
+          password: ${{ secrets.RADHEEF_PASSWORD }}
+          script: |
+            cd www
+            docker compose pull radheef
+            docker compose down radheef
+            docker compose up -d radheef
+            docker system prune -f
