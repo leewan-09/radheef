@@ -7,8 +7,6 @@ async function search(query: string) {
       OR: [
         { letter: { letter: { equals: normalizedQuery } } },
         { word: { startsWith: normalizedQuery } },
-        { word: { endsWith: normalizedQuery } },
-        { word: { contains: normalizedQuery } },
       ],
     },
     take: 5,

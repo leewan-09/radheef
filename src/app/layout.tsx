@@ -3,6 +3,7 @@ import "@/styles/globals.css";
 import { GeistSans } from "geist/font/sans";
 import { type Metadata, type Viewport } from "next";
 import { TRPCReactProvider } from "@/trpc/react";
+import Script from "next/script";
 
 export const metadata: Metadata = {
   title: "ރަދީފް - Dhivehi Dictionary",
@@ -21,7 +22,7 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" className={`${GeistSans.variable}`}>
-      <body className="bg-white">
+      <body className="bg-muted">
         <TRPCReactProvider>{children}</TRPCReactProvider>
       </body>
     </html>
