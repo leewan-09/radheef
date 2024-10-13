@@ -68,7 +68,7 @@ export default async function WordPage({ params }: Props) {
       <div className="mx-auto flex max-w-screen-lg flex-col px-5 lg:px-0">
 
       <div className="mt-8 flex justify-center md:justify-end">
-          <Image src='/Logo.svg' alt='Radheef Logo' width={110} height={110}/>
+          <Image src='/Logo.svg' alt='Radheef Logo' width={115} height={115}/>
       </div>
 
         <Search />
