@@ -22,7 +22,16 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" className={`${GeistSans.variable}`}>
-      <body className="bg-muted">
+<<<<<<< HEAD
+      <body className="bg-white">
+      <Script
+        defer
+        src="https://plausible.boxmv.org/js/script.js"
+        data-domain="radheef.xyz"
+      />
+=======
+
+>>>>>>> origin/main
         <TRPCReactProvider>{children}</TRPCReactProvider>
       </body>
     </html>
