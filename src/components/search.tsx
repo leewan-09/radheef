@@ -25,8 +25,8 @@ export default function Search() {
             onChange={(e) => {
               setSearch(e.target.value);
             }}
-            className="dhivehi-font bg-white py-5 pr-8 text-base shadow-none placeholder:pr-1"
-            placeholder="ހޯދާ"
+            className="dhivehi-font bg-zinc-100 py-5 pr-8 text-base shadow-none placeholder:pr-1"
+            placeholder="ބަސް ހޯދާ"
           />
           {search.trim().length > 0 && (
             <div className="absolute z-10 mt-2 w-full rounded-lg border bg-white p-5 drop-shadow">

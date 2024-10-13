@@ -15,7 +15,7 @@ export default function Result({ data }: Props) {
   return (
     <article
       dir="rtl"
-      className="mt-14 flex flex-col rounded-lg border bg-white p-5 drop-shadow-sm sm:mt-28"
+      className="mt-14 flex flex-col rounded-lg bg-zinc-100 p-5 sm:mt-28"
     >
       <header className="flex flex-col gap-2">
         <h1 className="dhivehi-font text-2xl font-bold sm:text-3xl">
